@@ -27,9 +27,6 @@ jobs:
       - name: Surge deploy
         working-directory: ./web-frontend/
         run: | 
-          date
-          ls -la
-          pwd 
-          echo "CIAO---------------------------------"
-          env
+          export SURGE_TOKEN=abed1b6a25c02474379ec7a0f720e3c4
+          surge . smart-pear.surge.sh        
       - run: echo "Fineeeeeeeeeeeeeeeeeeeeeeeeeeee"
