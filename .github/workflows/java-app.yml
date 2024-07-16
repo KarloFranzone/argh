@@ -17,5 +17,5 @@ jobs:
             pwd 
             echo "TEST---------------------------------"
             env
-      - run: mvn --version
-      - run: java -version
+        - run: mvn --version
+        - run: java -version
