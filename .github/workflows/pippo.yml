@@ -9,14 +9,23 @@ jobs:
     # - uses: actions/setup-node@v4
       #   with:
       #     node-version: '20'
+
+      - name: Test run
+        run: | 
+          date
+          ls -la
+          pwd 
+          echo "TEST---------------------------------"
+          env
       - run: npm install --global surge
       - run: surge --version
       - run: date >> README.md
+      - run: npm install
+        working-directory: ./web-frontend/test/
       - run: npm run build
-      - run: | 
-          export SURGE_TOKEN=abed1b6a25c02474379ec7a0f720e3c4
-          surge . smart-pear.surge.sh
-      - name: Test run
+        working-directory: ./web-frontend/test/
+      - name: Surge deploy
+        working-directory: ./web-frontend/test/
         run: | 
           date
           ls -la
