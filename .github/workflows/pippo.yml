@@ -25,8 +25,11 @@ jobs:
       - run: npm run build
         working-directory: ./web-frontend/
       - name: Surge deploy
+        env:
+          super_secret: ${{ secrets.MIO_SURGE_TOKEN }}
         working-directory: ./web-frontend/
         run: | 
-          export SURGE_TOKEN=abed1b6a25c02474379ec7a0f720e3c4
+          echo "questo è il super_secret ${super_secret}"
+          export SURGE_TOKEN=$super_secret
           surge . smart-pear.surge.sh        
       - run: echo "Fineeeeeeeeeeeeeeeeeeeeeeeeeeee"
